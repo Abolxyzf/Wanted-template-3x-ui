@@ -1,0 +1,333 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Tem - Galactic Purple</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<style>
+/* تم بنفش کهکشانی */
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#050509; --bg2:#0A0A12; --bg3:#11111E;
+  --card:#0D0D16; --card-b:rgba(162, 119, 245, 0.15); --card-bh:rgba(162, 119, 245, 0.35);
+  --accent:#9D7BF0; --accent2:#BCA4F7; --accent-d:rgba(157, 123, 240, 0.12);
+  --green:#22C55E; --green-bg:rgba(34, 197, 94, 0.1); --green-t:#4ADE80;
+  --red:#EF4444; --red-bg:rgba(239,68,68,0.1); --red-t:#FB8585;
+  --amber:#F7D046; --amber-bg:rgba(247,208,70,0.12); --amber-t:#FCE788;
+  --purple:#9D7BF0; --purple-bg:rgba(157,123,240,0.1); --purple-t:#BCA4F7;
+  --t1:#E0E7FF; --t2:#A5B4FC; --t3:#6366F1;
+  --radius:18px; --shadow:0 12px 40px rgba(10, 10, 30, 0.6);
+  --serif:'Vazirmatn',sans-serif;
+}
+[data-theme="light"]{
+  --bg:#F0F4FF; --bg2:#E0E7FF; --bg3:#C7D2FE;
+  --card:#FFFFFF; --card-b:rgba(129, 140, 248, 0.2); --card-bh:rgba(129, 140, 248, 0.4);
+  --accent:#6366F1; --accent2:#4F46E5; --accent-d:rgba(99, 102, 241, 0.09);
+  --green:#16A34A; --green-bg:rgba(22, 163, 74, 0.08); --green-t:#15803D;
+  --red:#DC2626; --red-bg:rgba(220,38,68,0.08); --red-t:#A51E1E;
+  --amber:#CA8A04; --amber-bg:rgba(202, 138, 4, 0.12); --amber-t:#854D0E;
+  --purple:#7E22CE; --purple-bg:rgba(126, 34, 206, 0.08); --purple-t:#6B21A8;
+  --t1:#1E1B4B; --t2:#312E81; --t3:#4338CA;
+  --shadow:0 12px 36px rgba(30, 30, 90, 0.1);
+}
+html,body{min-height:100%;background:var(--bg);font-family:var(--serif);color:var(--t1);font-size:14px;transition:background .35s,color .35s}
+.bg-fx{position:fixed;inset:0;background:radial-gradient(ellipse 70% 45% at 50% -8%,rgba(162, 119, 245, 0.18),transparent 62%),var(--bg);z-index:0;pointer-events:none;transition:background .35s}
+.grid-fx{position:fixed;inset:0;background-image:linear-gradient(rgba(162, 119, 245, 0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(162, 119, 245, 0.03) 1px,transparent 1px);background-size:46px 46px;z-index:0;pointer-events:none}
+.wrap{position:relative;z-index:10;max-width:800px;margin:0 auto;padding:24px 16px 40px}
+.top{display:flex;align-items:center;justify-content:flex-end;margin-bottom:20px;gap:10px}
+.icon-btn{width:36px;height:36px;border-radius:11px;background:var(--card);border:1px solid var(--card-b);color:var(--t2);display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;transition:.18s}
+.icon-btn:hover{background:var(--accent-d);color:var(--accent2);border-color:var(--card-bh)}
+
+
+.sub-info{background:var(--card);border:1px solid var(--card-b);border-radius:22px;padding:24px 24px 22px;margin-bottom:16px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.sub-info::before{content:'';position:absolute;top:0;right:0;width:160px;height:160px;background:radial-gradient(circle at top right,rgba(162, 119, 245,.12),transparent 70%);pointer-events:none}
+.sub-eyebrow{font-size:10px;font-weight:700;color:var(--accent2);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.sub-eyebrow i{font-size:13px}
+.sub-name{font-size:23px;font-weight:800;color:var(--t1);margin-bottom:6px;letter-spacing:-.02em}
+.sub-meta-row{font-size:10.5px;color:var(--t3);margin-bottom:14px;display:flex;align-items:center;gap:6px}
+.sub-sub-box{background:var(--accent-d);border:1px solid var(--card-b);border-radius:13px;padding:12px 14px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.sub-sub-url{font-family:ui-monospace,monospace;font-size:10px;color:var(--accent2);word-break:break-all;flex:1;min-width:140px}
+
+
+.total-usage-box{background:rgba(0,0,0,.14);border:1px solid var(--card-b);border-radius:13px;padding:14px 16px;margin-top:12px}
+[data-theme="light"] .total-usage-box{background:rgba(99, 102, 241,.03)}
+.tu-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;gap:8px;flex-wrap:wrap}
+.tu-label{font-size:10.5px;color:var(--t2);font-weight:700;display:flex;align-items:center;gap:6px}
+.tu-label i{color:var(--accent2);font-size:14px}
+.tu-val{font-size:11.5px;font-weight:800;color:var(--t1);font-family:ui-monospace,monospace}
+.tu-bar{height:9px;border-radius:6px;background:rgba(162, 119, 245, 0.12);overflow:hidden;position:relative}
+.tu-bar-f{height:100%;border-radius:6px;transition:width .6s ease;position:relative;overflow:hidden}
+.tu-bar-f::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);width:40%;animation:tuShimmer 1.8s linear infinite}
+@keyframes tuShimmer{0%{transform:translateX(-120%)}100%{transform:translateX(280%)}}
+.tu-foot{display:flex;justify-content:space-between;margin-top:7px;font-size:9.5px;color:var(--t3)}
+
+
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+.stat-card{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:16px 14px;transition:.2s;text-align:center}
+.stat-card:hover{border-color:var(--card-bh);transform:translateY(-1px)}
+.stat-label{font-size:9px;color:var(--t3);font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:7px}
+.stat-val{font-size:18px;font-weight:800;color:var(--t1);line-height:1;letter-spacing:-.01em}
+.stat-sub{font-size:9.5px;color:var(--t3);margin-top:6px}
+
+
+.copy-all-bar{display:flex;align-items:center;gap:12px;background:linear-gradient(120deg,#6366F1 0%,#7E22CE 50%,#DB2777 100%);border-radius:18px;padding:16px 19px;margin-bottom:18px;box-shadow:0 10px 30px rgba(126, 34, 206,.35);flex-wrap:wrap}
+.copy-all-text{flex:1;min-width:160px}
+.copy-all-title{font-size:13.5px;font-weight:800;color:#fff;display:flex;align-items:center;gap:6px}
+.copy-all-sub{font-size:10px;color:rgba(255,255,255,.78);margin-top:3px}
+.copy-all-btn{background:#fff;color:#581C87;border:none;border-radius:12px;padding:10px 19px;font-family:inherit;font-size:12.5px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:6px;transition:.18s;white-space:nowrap}
+.copy-all-btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.22)}
+.copy-all-btn:active{transform:translateY(0) scale(.98)}
+
+
+.cfg-title{font-size:12px;font-weight:800;color:var(--t2);margin-bottom:13px;display:flex;align-items:center;gap:6px;text-transform:uppercase;letter-spacing:.07em}
+.cfg-title i{color:var(--accent);font-size:15px}
+.cfg-grid{display:grid;gap:13px}
+
+
+.cfg-card{background:var(--card);border:1px solid var(--card-b);border-radius:18px;transition:all .2s;position:relative;overflow:hidden}
+.cfg-card:hover{border-color:var(--card-bh);box-shadow:var(--shadow)}
+.cfg-top{padding:17px 19px 15px;position:relative}
+.cfg-top::after{content:'';position:absolute;top:0;right:0;width:3px;height:100%;background:var(--accent)}
+.cfg-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.cfg-label{font-size:14.5px;font-weight:700;color:var(--t1)}
+.cfg-badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
+.proto-chip{font-size:9px;padding:3px 8px;border-radius:7px;font-weight:800;letter-spacing:.02em}
+.pc-ws{background:var(--accent-d);color:var(--accent2)}
+.cfg-status{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px;white-space:nowrap;background:var(--green-bg);color:var(--green-t)}
+
+
+.cfg-tear{position:relative;height:0;border-top:1.5px dashed var(--card-b);margin:0 19px}
+.cfg-tear::before,.cfg-tear::after{content:'';position:absolute;top:50%;width:18px;height:18px;border-radius:50%;background:var(--bg);transform:translateY(-50%);border:1px solid var(--card-b)}
+.cfg-tear::before{right:-28px}
+.cfg-tear::after{left:-28px}
+
+
+.cfg-bottom{padding:15px 19px 18px}
+.cfg-link-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;background:transparent;border:1px dashed var(--card-b);border-radius:11px;padding:10px 13px;cursor:pointer;font-family:inherit;color:var(--t2);font-size:11.5px;font-weight:600;transition:.15s}
+.cfg-link-toggle:hover{background:var(--accent-d);border-color:var(--card-bh);color:var(--accent2)}
+.cfg-link-toggle .ltl{display:flex;align-items:center;gap:7px}
+.cfg-link-toggle i.ti-chevron-down{transition:transform .2s}
+.cfg-link-toggle.open i.ti-chevron-down{transform:rotate(180deg)}
+.cfg-vless-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .25s ease}
+.cfg-vless-wrap.open{grid-template-rows:1fr}
+.cfg-vless-inner{overflow:hidden}
+.cfg-vless{background:rgba(0,0,0,.22);border:1px solid var(--card-b);border-radius:10px;padding:11px 13px;font-size:9.8px;font-family:ui-monospace,monospace;color:var(--accent2);word-break:break-all;line-height:1.7;margin-top:9px;max-height:90px;overflow-y:auto}
+[data-theme="light"] .cfg-vless{background:rgba(99,102,241,.05)}
+.cfg-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}
+.btn{font-family:inherit;font-size:11.5px;font-weight:700;border-radius:10px;padding:8px 15px;cursor:pointer;display:inline-flex;align-items:center;gap:5px;border:none;transition:all .15s;white-space:nowrap}
+.btn i{font-size:13px}
+.btn-p{background:var(--accent);color:#fff;box-shadow:0 3px 12px rgba(157,123,240,.3)}
+.btn-p:hover{background:var(--accent2);color:#000}
+.btn-g{background:var(--accent-d);color:var(--accent2);border:1px solid rgba(157,123,240,.16)}
+.btn-g:hover{background:rgba(157,123,240,0.2)}
+.btn-amber{background:var(--amber-bg);color:var(--amber-t);border:1px solid var(--amber-t)}
+.btn-amber:hover{opacity:.88}
+
+
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(40px);background:var(--card);border:1px solid var(--card-b);color:var(--t1);border-radius:12px;padding:10px 20px;font-size:12.5px;font-weight:600;opacity:0;transition:all .25s;z-index:999;pointer-events:none;display:flex;align-items:center;gap:7px;box-shadow:var(--shadow);white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.ok{border-color:rgba(157,123,240,.35);background:var(--purple-bg);color:var(--purple-t)}
+
+
+.qr-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:600;align-items:center;justify-content:center;backdrop-filter:blur(6px);padding:20px}
+.qr-modal.open{display:flex}
+.qr-box{background:var(--card);border:1px solid var(--card-b);border-radius:22px;padding:26px;text-align:center;max-width:340px;width:100%;box-shadow:var(--shadow)}
+.qr-title{font-size:13.5px;font-weight:800;margin-bottom:16px;color:var(--t1)}
+.qr-img{border-radius:14px;overflow:hidden;margin-bottom:15px}
+.qr-img img{width:100%;display:block;background:#fff;padding:10px;border-radius:14px}
+
+
+@media(max-width:650px){
+  .stats-bar{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:520px){
+  .sub-name{font-size:19px}
+  .copy-all-bar{flex-direction:column;align-items:stretch}
+  .copy-all-btn{justify-content:center}
+  .wrap{padding:16px 12px 30px}
+}
+</style>
+</head>
+<body>
+<div class="bg-fx"></div><div class="grid-fx"></div>
+<div class="toast" id="toast"></div>
+<div class="qr-modal" id="qr-modal" onclick="this.classList.remove('open')">
+  <div class="qr-box" onclick="event.stopPropagation()">
+    <div class="qr-title" id="qr-label">QR Code</div>
+    <div class="qr-img"><img id="qr-img" src="" alt="QR"></div>
+    <button class="btn btn-g" style="width:100%;justify-content:center" onclick="document.getElementById('qr-modal').classList.remove('open')"><i class="ti ti-x"></i> بستن</button>
+  </div>
+</div>
+<div class="wrap">
+  <div class="top">
+    <button class="icon-btn" id="theme-toggle" onclick="toggleTheme()" title="تغییر تم"><i class="ti ti-sun" id="theme-icon"></i></button>
+  </div>
+
+
+  <div class="sub-info">
+    <div class="sub-eyebrow"><i class="ti ti-folders"></i> نام اشتراک / کاربر</div>
+    <div class="sub-name">{{if .ClientUsername}}{{.ClientUsername}}{{else}}{{.UserEmail}}{{end}}</div>
+    <div class="sub-meta-row"><i class="ti ti-clock"></i> آخرین بروزرسانی: <span id="now-time"></span></div>
+    <div class="sub-sub-box">
+      <span class="sub-sub-url" id="sub-url-txt">{{.SubUrl}}</span>
+      <button class="btn btn-g" style="padding:7px 12px;font-size:10.5px" onclick="copyText('{{.SubUrl}}','لینک ساب کپی شد ✓')">
+        <i class="ti ti-copy"></i> کپی لینک ساب
+      </button>
+      <button class="btn btn-g" style="padding:7px 12px;font-size:10.5px" onclick="showQR('{{if .ClientUsername}}{{.ClientUsername}}{{else}}{{.UserEmail}}{{end}} — کل گروه','{{.SubUrl}}')">
+        <i class="ti ti-qrcode"></i> QR کل
+      </button>
+    </div>
+
+
+    <div class="total-usage-box">
+      <div class="tu-head">
+        <span class="tu-label"><i class="ti ti-chart-donut-2"></i> مصرف کل</span>
+        <span class="tu-val">{{.TrafficUsed}} <span style="color:var(--t3);font-weight:600"> / {{.TrafficTotal}}</span></span>
+      </div>
+      <div class="tu-bar"><div class="tu-bar-f" id="tu-bar-f" style="width:0%;background:var(--accent)"></div></div>
+      <div class="tu-foot">
+        <span id="tu-foot-txt">باقیمانده: {{.TrafficRemain}}</span>
+        <span>{{len .Configs}} کانفیگ</span>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="copy-all-bar">
+    <div class="copy-all-text">
+      <div class="copy-all-title"><i class="ti ti-copy"></i> کپی همه‌ی کانفیگ‌ها</div>
+      <div class="copy-all-sub">تمام لینک‌های این اشتراک را یک‌جا کپی کن</div>
+    </div>
+    <button class="copy-all-btn" onclick="copyAllConfigs()"><i class="ti ti-clipboard-copy"></i> کپی همه ({{len .Configs}})</button>
+  </div>
+
+
+  <div class="stats-bar">
+    <div class="stat-card">
+      <div class="stat-label">تعداد کانفیگ‌ها</div>
+      <div class="stat-val">{{len .Configs}}</div>
+      <div class="stat-sub">پروتکل‌های فعال</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">وضعیت</div>
+      <div class="stat-val" style="font-size:15px;margin-top:3px">{{if .IsActive}}فعال{{else}}غیرفعال{{end}}</div>
+      <div class="stat-sub">{{if .IsActive}}پایدار{{else}}متوقف شده{{end}}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">دستگاه‌های آنلاین</div>
+      <div class="stat-val" style="font-size:16px;margin-top:3px">{{if .OnlineCount}}{{.OnlineCount}}{{else}}0{{end}}</div>
+      <div class="stat-sub">فعال هم‌زمان</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">انقضا</div>
+      <div class="stat-val" style="font-size:14px;margin-top:3px">{{if .ExpiryTime}}{{.ExpiryTime}}{{else}}نامحدود{{end}}</div>
+      <div class="stat-sub">تاریخ پایان</div>
+    </div>
+  </div>
+
+
+  <div class="cfg-title"><i class="ti ti-link"></i> کانفیگ‌ها ({{len .Configs}} عدد)</div>
+  <div class="cfg-grid">
+    {{range $i, $config := .Configs}}
+    <div class="cfg-card">
+      <div class="cfg-top">
+        <div class="cfg-head">
+          <div>
+            <div class="cfg-label">{{$config.Name}}</div>
+            <div class="cfg-badges">
+              <span class="proto-chip pc-ws">{{$config.Protocol}}</span>
+            </div>
+          </div>
+          <span class="cfg-status"><i class="ti ti-circle-check"></i> فعال</span>
+        </div>
+      </div>
+      <div class="cfg-tear"></div>
+      <div class="cfg-bottom">
+        <button class="cfg-link-toggle" id="vt-{{$i}}" onclick="toggleLink({{$i}})">
+          <span class="ltl"><i class="ti ti-eye"></i> <span>نمایش لینک کانفیگ</span></span>
+          <i class="ti ti-chevron-down"></i>
+        </button>
+        <div class="cfg-vless-wrap" id="vw-{{$i}}">
+          <div class="cfg-vless-inner">
+            <div class="cfg-vless">{{$config.Link}}</div>
+          </div>
+        </div>
+        <div class="cfg-actions">
+          <button class="btn btn-p" onclick="copyText('{{$config.Link}}','لینک کپی شد ✓')">
+            <i class="ti ti-copy"></i> کپی لینک
+          </button>
+          <button class="btn btn-g" onclick="showQR('{{$config.Name}}','{{$config.Link}}')">
+            <i class="ti ti-qrcode"></i> QR
+          </button>
+        </div>
+      </div>
+    </div>
+    {{end}}
+  </div>
+</div>
+
+
+<script>
+const SUB_DATA = {
+  totalByte: {{if .TotalBytes}}{{.TotalBytes}}{{else}}0{{end}},
+  usedByte: {{if .UsedBytes}}{{.UsedBytes}}{{else}}0{{end}},
+  links: [{{range $i, $config := .Configs}}{{if $i}},{{end}}"{{$config.Link}}"{{end}}]
+};
+
+
+let isDark = localStorage.getItem('rvg-pub-theme') !== 'light';
+function applyTheme(dark) {
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  document.getElementById('theme-icon').className = 'ti ' + (dark ? 'ti-sun' : 'ti-moon');
+}
+function toggleTheme() {
+  isDark = !isDark;
+  localStorage.setItem('rvg-pub-theme', isDark ? 'dark' : 'light');
+  applyTheme(isDark);
+}
+applyTheme(isDark);
+
+
+function toast(msg, type = '') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (type ? ' ' + type : '');
+  setTimeout(() => t.classList.remove('show'), 2400);
+}
+function copyText(text, msg) {
+  navigator.clipboard.writeText(text).then(() => toast(msg, 'ok'));
+}
+function copyAllConfigs() {
+  if (!SUB_DATA.links.length) {
+    toast('کانفیگی برای کپی نیست', '');
+    return;
+  }
+  navigator.clipboard.writeText(SUB_DATA.links.join('\n')).then(() => toast('همه‌ی ' + SUB_DATA.links.length + ' کانفیگ کپی شد ✓', 'ok'));
+}
+function showQR(label, link) {
+  document.getElementById('qr-label').textContent = label;
+  document.getElementById('qr-img').src = 'https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=' + encodeURIComponent(link);
+  document.getElementById('qr-modal').classList.add('open');
+}
+function toggleLink(i) {
+  const wrap = document.getElementById('vw-' + i);
+  const btn = document.getElementById('vt-' + i);
+  wrap.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+
+
+window.addEventListener('DOMContentLoaded', () => {
+  const now = new Date();
+  document.getElementById('now-time').textContent = now.toLocaleDateString('fa-IR') + ' - ' + now.toLocaleTimeString('fa-IR');
+  
+  if (SUB_DATA.totalByte > 0) {
+    const pct = Math.min(100, Math.round((SUB_DATA.usedByte / SUB_DATA.totalByte) * 100));
+    document.getElementById('tu-bar-f').style.width = pct + '%';
+  }
+});
+</script>
+</body>
+</html>
